@@ -40,7 +40,9 @@
 
     <v-main>
         <v-row no-gutters>
-            <v-col cols="3"><v-container style="border: solid;"></v-container></v-col>
+            <v-col cols="3">
+                <ContentsSearchContainer/>
+            </v-col>
             <v-col>
                 <ContentsListContainer
                     :key="`${select_content_type}`"
