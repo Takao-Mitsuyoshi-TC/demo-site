@@ -8,7 +8,7 @@ const myCustomLightTheme: ThemeDefinition = {
   colors: {
     background: '#ffffff',
     surface: '#FFFFFF',
-    primary: '#ff69b4',
+    primary: '#ffc0cb',
     'primary-darken-1': '#3700B3',
     secondary: '#03DAC6',
     'secondary-darken-1': '#018786',

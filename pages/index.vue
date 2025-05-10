@@ -5,6 +5,11 @@
     items.set(8, "Dcumtent");
     items.set(0, "e-learning");
 
+    const select_content_type = ref("15");
+
+    const onClickContentsType = (contents_type:string): void => {
+        select_content_type.value = contents_type;
+    }
 </script>
 
 <template>
@@ -27,28 +32,24 @@
         </v-tabs-window-item>
     </v-tabs-window>
     <IndexNavigationDrawer
-        :key="`${items.get(tab)}`"
+        :key="`${tab}`"
         v-bind:group_nm="`${items.get(tab)}`"
         v-bind:topics_group_id="`${tab}`"
+        v-on:selectContentsType="onClickContentsType"
     />
 
-    <v-main class="d-flex align-center justify-center" height="300">
-      <v-container width="20%">
-        <v-sheet
-          border="dashed md"
-          height="100vh"
-          rounded="lg"
-          width="100%"
-        ></v-sheet>
-      </v-container>
-      <v-container width="80%">
-        <v-sheet
-          border="dashed md"
-          height="100vh"
-          rounded="lg"
-          width="100%"
-        ></v-sheet>
-      </v-container>
+    <v-main>
+        <v-row no-gutters>
+            <v-col cols="3"><v-container style="border: solid;"></v-container></v-col>
+            <v-col>
+                <ContentsListContainer
+                    :key="`${select_content_type}`"
+                    v-bind:topics_group_id="`${tab}`"
+                    v-bind:contents_type="`${select_content_type}`"
+                />
+            </v-col>
+        </v-row>
+
     </v-main>
   </v-layout>
 
