@@ -14,6 +14,12 @@ export default defineNuxtConfig({
       },
     },
   },
+  runtimeConfig: {
+    public: {
+        apiDomainUrl: `https://tc-test1.g.kuroco.app`,
+        apiBasePath: `/rcms-api/4`
+    }
+  },
   modules: [
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
