@@ -24,7 +24,6 @@ const {data: items} = await useLazyFetch(
         credentials:`include`,
         default: (): any[] => [ { title: "", value: "" } ],
         transform: (data): any[] => {
-            //const items:any[] = [{ title:"", value: "" }];
             const items:any[] = [];
             for (let i:number = 1; i < data.list.length; i++) {
                 if (data.list[i][0] !== "") {
@@ -43,13 +42,12 @@ type Emit = {
 }
 const selectValue = ref("");
 const emit = defineEmits<Emit>();
-
-const changeValue = (): void => {
+watch(selectValue, () => {
     emit("selectMaster", selectValue.value);
-}
+});
 
 </script>
 
 <template>
-    <v-select v-model="selectValue" :items="items" :item-title="items.title" :item-value="items.value" :label="`${props.table_nm}`" clearable @click="changeValue"></v-select>
+    <v-select v-model="selectValue" :items="items" :item-title="items.title" :item-value="items.value" :label="`${props.table_nm}`" clearable></v-select>
 </template>

@@ -16,8 +16,9 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-        apiDomainUrl: `https://tc-test1.g.kuroco.app`,
-        apiBasePath: `/rcms-api/4`
+      apiDomainUrl: `https://tc-test1.g.kuroco.app`,
+      apiBasePath: `/rcms-api/4`,
+      defaultTopicsGroupId: 7
     }
   },
   modules: [
@@ -34,6 +35,12 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxt/test-utils',
-    '@nuxt/ui'
-  ]
-})
+    '@nuxt/ui',
+    '@pinia/nuxt'
+  ],
+  eslint: {
+    cache: false,
+    eslintPath: './eslintrc.mjs'
+  },
+});
+
