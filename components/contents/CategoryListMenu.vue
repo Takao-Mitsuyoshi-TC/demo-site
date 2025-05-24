@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { TopicsCategoryInfo, TopicsCategorySearchInfo } from "@/interfaces/contents/TopicsCategoryModel"
-import type { TopicsInfo, TopicsSearchInfo } from "@/interfaces/contents/TopicsModel"
 
 const contentsParam = useContentsParam();
 
@@ -24,13 +23,17 @@ onUpdated(() => {
   if (status.value === "error") {
     throw createError({ statusCode: error.value?.statusCode, statusMessage: error.value?.statusMessage, fatal: true });
   }
-  data.value.list.forEach((topicsCategoryInfo: TopicsCategoryInfo) => {
+
+  countTotal();
+});
+
+const countTotal = async () => {
+  totalCnt.value = 0;
+  await data.value.list.forEach((topicsCategoryInfo: TopicsCategoryInfo) => {
     totalCnt.value = totalCnt.value + topicsCategoryInfo.cnt;
   });
-});
-onBeforeUpdate(() => {
-  totalCnt.value = 0;
-});
+};
+
 </script>
 
 <template>

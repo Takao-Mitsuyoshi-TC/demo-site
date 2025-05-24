@@ -11,3 +11,11 @@ export const path_mapping: { [key: string]: string } = {
     home: "/",
     contents: "/contents"
 } as const
+
+export const master_id = {
+    product_category: 2,
+    product_brand: 1,
+    product_group: 3,
+    media_format: 4,
+    usage_restricions: 5,
+} as const

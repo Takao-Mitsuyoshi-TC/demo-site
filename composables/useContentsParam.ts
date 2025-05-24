@@ -10,7 +10,8 @@ export const useContentsParam = defineStore(
         topics_category_id: "",
         category_nm: "",
         filter: "",
-        tag_id: [0],
+        tag_id: [],
+        topics_keyword: "",
       }
     ),
   },

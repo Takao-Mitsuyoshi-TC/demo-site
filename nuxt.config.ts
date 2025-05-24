@@ -18,7 +18,8 @@ export default defineNuxtConfig({
     public: {
       apiDomainUrl: `https://tc-test1.g.kuroco.app`,
       apiBasePath: `/rcms-api/4`,
-      defaultTopicsGroupId: 7
+      defaultTopicsGroupId: 7,
+      videoCategory: [24]
     }
   },
   modules: [
