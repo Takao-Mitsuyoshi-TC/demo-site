@@ -23,6 +23,7 @@ onUpdated(() => {
         </v-expansion-panel-title>
         <v-expansion-panel-text>
           <template v-for="{tag_id, tag_nm, open_contents_cnt} in tags">
+            
             <v-checkbox hide-details v-model="contentsParam.tag_id" :value="`${ tag_id }`" v-if="open_contents_cnt > 0" :label="`${tag_nm}`">{{ open_contents_cnt }}</v-checkbox>
             <v-checkbox hide-details v-if="open_contents_cnt == 0" :label="`${tag_nm}`" disabled>{{ open_contents_cnt }}</v-checkbox>
           </template>

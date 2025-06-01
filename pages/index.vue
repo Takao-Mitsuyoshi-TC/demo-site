@@ -1,6 +1,9 @@
 <script lang="ts" setup>
-
+definePageMeta({
+  middleware: ["auth"], 
+})
 const contentsParam = useContentsParam();
+const auth = useAuth();
 const config = useRuntimeConfig();
 
 contentsParam.topics_group_id = config.public.defaultTopicsGroupId;
@@ -13,6 +16,9 @@ contentsParam.topics_group_id = config.public.defaultTopicsGroupId;
         <template v-slot:extension>
           <ContentsGourpTabMenu/>
         </template>
+        <v-btn icon>
+          <v-icon>mdi-account</v-icon>
+        </v-btn>
     </v-app-bar>
     <v-navigation-drawer>
       <ContentsCategoryListMenu

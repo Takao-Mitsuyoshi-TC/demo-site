@@ -42,7 +42,8 @@ onUpdated(() => {
 <template>
   <template v-if="status === `success`">
     <v-divider></v-divider>
-    <div class="text-h5 pa-5">{{ category_nm ?? "ALL" }}</div>
+    <div v-if="category_nm === `undefined` || category_nm == null" class="text-h5 pa-5">ALL</div>
+    <div v-else  class="text-h5 pa-5">{{ category_nm }}</div>
     <v-divider></v-divider>
     <v-container>
       <v-row>

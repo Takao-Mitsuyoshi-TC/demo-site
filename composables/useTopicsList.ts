@@ -19,9 +19,9 @@ export const useTopicsList = async (searchInfo: TopicsListSearchInfo) => {
         
     }
     const {data, status, refresh, error} = useLazyFetch (
-        `/topics_list`, {
+        `/topics/list`, {
             baseURL: `${config.public.apiDomainUrl}${config.public.apiBasePath}`,
-            key: `/topics_list/${now}`,
+            key: `/topics/list/${now}`,
             query: query,
             credentials:`include`,
             transform: (response: any): any => {
