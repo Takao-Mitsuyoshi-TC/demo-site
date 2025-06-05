@@ -68,6 +68,9 @@ function required(v: boolean) {
 </script>
 
 <template>
+  <v-card-title>
+    <h1 class="display-1">login</h1>
+  </v-card-title>
   <v-card class="mx-auto mt-6 h-50 w-33 px-6 py-8">
     <v-form v-model="form" @submit.prevent="onLoginButtonClick">
       <v-text-field
