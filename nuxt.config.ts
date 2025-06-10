@@ -38,10 +38,6 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxt/ui',
     '@pinia/nuxt'
-  ],
-  eslint: {
-    cache: false,
-    eslintPath: './eslintrc.mjs'
-  },
+  ]
 });
 

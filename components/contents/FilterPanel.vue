@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { ContentsFilterCheckBox } from '#components';
+
 const contentsParam = useContentsParam();
 
 const { data, status, error } = await useTagCategoryList();
@@ -23,9 +25,13 @@ onUpdated(() => {
         </v-expansion-panel-title>
         <v-expansion-panel-text>
           <template v-for="{tag_id, tag_nm, open_contents_cnt} in tags">
-            
-            <v-checkbox hide-details v-model="contentsParam.tag_id" :value="`${ tag_id }`" v-if="open_contents_cnt > 0" :label="`${tag_nm}`">{{ open_contents_cnt }}</v-checkbox>
-            <v-checkbox hide-details v-if="open_contents_cnt == 0" :label="`${tag_nm}`" disabled>{{ open_contents_cnt }}</v-checkbox>
+            <ContentsFilterCheckBox
+              v-bind:topics_group_id="contentsParam.topics_group_id"
+              v-bind:contents_type="contentsParam.topics_category_id"
+              v-bind:tag_id="tag_id"
+              v-bind:tag_nm="tag_nm"
+            >
+            </ContentsFilterCheckBox>
           </template>
         </v-expansion-panel-text>
       </v-expansion-panel>

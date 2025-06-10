@@ -5,10 +5,15 @@ import type { ErrorInfo } from "@/interfaces/error/ErrorModel"
 export const useTopicsList = async (searchInfo: TopicsListSearchInfo) => {
     const config = useRuntimeConfig();
     const now = new Date();
+    if (searchInfo.tag_id == false) {
+        searchInfo.tag_id = null;
+    }
+
     let queryString : string = JSON.stringify(searchInfo).replace("tag_id", "tag_id[]");
     let query = searchInfo;
-    if (searchInfo.tag_id != null && searchInfo.tag_id.length > 0)
-    {
+
+    if (searchInfo.tag_id != null && searchInfo.tag_id.length > 0 && searchInfo.tag_id != false) {
+
         // tag_idを複数で指定する場合は「tag_id[]」という名前でしかKurocoが受け付けていないのでここで無理やり変換
         if (!queryString.includes("tag_id[]")) {
             query = JSON.parse(queryString.replace("tag_id", "tag_id[]"));
@@ -16,7 +21,6 @@ export const useTopicsList = async (searchInfo: TopicsListSearchInfo) => {
         else {
             query = JSON.parse(queryString);
         }
-        
     }
     const {data, status, refresh, error} = useLazyFetch (
         `/topics/list`, {

@@ -6,7 +6,7 @@ export interface TopicsListSearchInfo {
     filter?: string;
     topics_keyword?: string;
     pageID?: number;
-    tag_id?: string[];
+    tag_id?: number[];
 }
 
 export interface TopicsSearchInfo {
