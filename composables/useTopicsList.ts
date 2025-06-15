@@ -5,9 +5,6 @@ import type { ErrorInfo } from "@/interfaces/error/ErrorModel"
 export const useTopicsList = async (searchInfo: TopicsListSearchInfo) => {
     const config = useRuntimeConfig();
     const now = new Date();
-    if (searchInfo.tag_id == false) {
-        searchInfo.tag_id = null;
-    }
 
     let queryString : string = JSON.stringify(searchInfo).replace("tag_id", "tag_id[]");
     let query = searchInfo;
@@ -22,10 +19,10 @@ export const useTopicsList = async (searchInfo: TopicsListSearchInfo) => {
             query = JSON.parse(queryString);
         }
     }
-    const {data, status, refresh, error} = useLazyFetch (
+    const {data, status, refresh, error} = await useLazyFetch (
         `/topics/list`, {
             baseURL: `${config.public.apiDomainUrl}${config.public.apiBasePath}`,
-            key: `/topics/list/${now}`,
+            key: `/topics/list/${queryString}/${searchInfo.pageID}/${now}`,
             query: query,
             credentials:`include`,
             transform: (response: any): any => {

@@ -5,7 +5,7 @@ import type { ErrorInfo } from "@/interfaces/error/ErrorModel"
 export const useTopicsCategoryList = async (searchInfo: TopicsCategorySearchInfo) => {
     const config = useRuntimeConfig();
     const now = new Date();
-    const {data, status, refresh, error} = useLazyFetch (
+    const {data, status, refresh, error} = await useLazyFetch (
         `/topics-category/list`, {
             baseURL: `${config.public.apiDomainUrl}${config.public.apiBasePath}`,
             key: `/topics-category/list/${now}`,

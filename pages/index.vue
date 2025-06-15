@@ -34,7 +34,7 @@ contentsParam.topics_group_id = config.public.defaultTopicsGroupId;
     <v-main>
       <ContentsBreadCrumbs/>
       <ContentsListContainer
-        :key="`${contentsParam.topics_category_id}/${contentsParam.topics_keyword}/${contentsParam.tag_id}`"
+        :key="`${contentsParam.topics_category_id}/${contentsParam.topics_keyword}/${contentsParam.tag_id}/${contentsParam.page_number}`"
         v-bind:topics_group_id=contentsParam.topics_group_id
         v-bind:contents_type="`${contentsParam.topics_category_id}`"
         v-bind:category_nm="`${contentsParam.category_nm}`"

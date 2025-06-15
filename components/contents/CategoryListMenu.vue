@@ -12,6 +12,8 @@ const props = defineProps<Props>();
 const selectItem = (id: string, nm: string) => {
   contentsParam.topics_category_id = id;
   contentsParam.category_nm = nm;
+  contentsParam.tag_id = [];
+  contentsParam.page_number = 1;
 };
 
 const searchInfo: TopicsCategorySearchInfo = { topics_group_id: props.topics_group_id};

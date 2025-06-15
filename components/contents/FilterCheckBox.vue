@@ -20,6 +20,7 @@ searchInfo.tag_id = [props.tag_id];
 const { data, status, error } = await useTopicsListCountOnly(searchInfo);
 
 const change = (tag_id: number) => {
+  contentsParam.page_number = 1;
   if (contentsParam.tag_id == null) {
     contentsParam.tag_id = [];
   }
@@ -33,15 +34,15 @@ const change = (tag_id: number) => {
     const index = contentsParam.tag_id.indexOf(String(props.tag_id));
     contentsParam.tag_id.splice(index, 1);
   }
-  
-
 };
 const selected = ref([]);
 </script>
 
 <template>
-  <v-container>
-    <v-checkbox hide-details v-model="selected" :value="`${ props.tag_id }`" v-if="data.cnt > 0" :label="`${props.tag_nm}`" @change="change(props.tag_id)">{{ data.cnt }}</v-checkbox>
-    <v-checkbox hide-details v-else :label="`${tag_nm}`" disabled>{{ data.cnt }}</v-checkbox>
-  </v-container>
+  <template v-if="status === `success`">
+    <v-container>
+      <v-checkbox hide-details v-model="selected" :value="`${ props.tag_id }`" v-if="data.cnt > 0" :label="`${props.tag_nm}`" @change="change(props.tag_id)">{{ data.cnt }}</v-checkbox>
+      <v-checkbox hide-details v-else :label="`${tag_nm}`" disabled>{{ data.cnt }}</v-checkbox>
+    </v-container>
+  </template>
 </template>

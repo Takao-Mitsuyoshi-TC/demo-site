@@ -4,7 +4,7 @@ import type { ErrorInfo } from "@/interfaces/error/ErrorModel"
 export const useTopicsGroupList = async () => {
     const config = useRuntimeConfig();
     const now = new Date();
-    const {data, status, refresh, error} = useLazyFetch (
+    const {data, status, refresh, error} = await useLazyFetch (
         `/topics-group/list`, {
             baseURL: `${config.public.apiDomainUrl}${config.public.apiBasePath}`,
             key: `/topics-group/list/${now}`,

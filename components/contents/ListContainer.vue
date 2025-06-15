@@ -5,10 +5,10 @@ const config = useRuntimeConfig();
 const contentsParam = useContentsParam();
 
 interface Props {
-    topics_group_id: number;
-    contents_type: string;
-    category_nm: string;
-    tag_id: string[];
+  topics_group_id: number;
+  contents_type: string;
+  category_nm: string;
+  tag_id: number[];
 }
 
 const props = defineProps<Props>();
@@ -19,17 +19,15 @@ searchInfo.topics_group_id = contentsParam.topics_group_id;
 searchInfo.contents_type = contentsParam.topics_category_id;
 searchInfo.topics_keyword = contentsParam.topics_keyword;
 searchInfo.tag_id = contentsParam.tag_id;
-searchInfo.pageID = pageNumber.value;
-
-const { data, status, error} = await useTopicsList(searchInfo);
+searchInfo.pageID = contentsParam.page_number;
 
 const Paging = async () => {
-    searchInfo.topics_group_id = props.topics_group_id;
-    searchInfo.contents_type = props.contents_type;
-    searchInfo.pageID = pageNumber.value;
-    searchInfo.tag_id = contentsParam.tag_id;
+  contentsParam.page_number = pageNumber.value;
+  searchInfo.pageID = contentsParam.page_number;
+
 };
 
+const { data, status, error, refresh} = await useTopicsList(searchInfo);
 
 onUpdated(() => {
   if (status.value === "error") {
@@ -71,7 +69,7 @@ onUpdated(() => {
         </V-col>  
       </v-row>
     </v-container>
-    <v-pagination v-model="pageNumber" :length="data.pageInfo.totalPageCnt" total-visible="10" @click.prevent="Paging"></v-pagination>
+    <v-pagination v-model="pageNumber" :length="data.pageInfo.totalPageCnt" total-visible="10" @click="Paging"></v-pagination>
   </template>
 
 </template>

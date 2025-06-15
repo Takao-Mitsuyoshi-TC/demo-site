@@ -4,7 +4,7 @@ import type { ErrorInfo } from "@/interfaces/error/ErrorModel"
 export const useMasterList = async (searchInfo: MasterSearchInfo) => {
     const config = useRuntimeConfig();
     const now = new Date();
-    const {data, status, refresh, error} = useLazyFetch (
+    const {data, status, refresh, error} = await useLazyFetch (
       `/master/list`, {
         baseURL: `${config.public.apiDomainUrl}${config.public.apiBasePath}`,
         key: `/master/list/${searchInfo.csvtable_id}/${now}`,
