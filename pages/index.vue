@@ -7,6 +7,10 @@ const auth = useAuth();
 const config = useRuntimeConfig();
 
 contentsParam.topics_group_id = config.public.defaultTopicsGroupId;
+
+const onClickAddButton = () => {
+  navigateTo(`/contents/post`)
+}
 </script>
 
 <template>
@@ -33,6 +37,9 @@ contentsParam.topics_group_id = config.public.defaultTopicsGroupId;
     </v-navigation-drawer>
     <v-main>
       <ContentsBreadCrumbs/>
+      <div class="d-flex">
+        <v-btn class="ml-auto" variant="flat" prepend-icon="mdi-plus-circle" @click="onClickAddButton">Add Contents</v-btn>
+      </div>
       <ContentsListContainer
         :key="`${contentsParam.topics_category_id}/${contentsParam.topics_keyword}/${contentsParam.tag_id}/${contentsParam.page_number}`"
         v-bind:topics_group_id=contentsParam.topics_group_id

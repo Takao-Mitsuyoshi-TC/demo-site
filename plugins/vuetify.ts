@@ -1,5 +1,6 @@
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
+import { VFileUpload } from 'vuetify/labs/VFileUpload'
 import { createVuetify, type ThemeDefinition } from 'vuetify'
 import * as components from 'vuetify/components'
 
@@ -27,7 +28,9 @@ export default defineNuxtPlugin((app) => {
         myCustomLightTheme,
       },
     },
-    components
+    components: {
+      VFileUpload
+    }
   })
   app.vueApp.use(vuetify)
 })

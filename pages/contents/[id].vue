@@ -16,7 +16,7 @@ const { data, status, error } = await useTopicsDetails(searchInfo);
   <template v-if="status === `success`">
     <v-row>
     <v-col cols="4">
-      <v-sheet color="red">
+      <v-sheet>
         <v-card>
           <v-card-text>
             <template v-if="data.details.contents_type === 24">
@@ -27,8 +27,6 @@ const { data, status, error } = await useTopicsDetails(searchInfo);
             </template>
           </v-card-text>
         </v-card>
-        
-        
       </v-sheet>
     </v-col>
     <v-col cols="8">
@@ -47,57 +45,31 @@ const { data, status, error } = await useTopicsDetails(searchInfo);
         </v-row>
         <v-row>
           <v-col cols="4">Product Brand</v-col>
-          
-          <CommonMasterCheckBoxes
-            :key=master_id.product_brand
-            v-bind:csvtable_id=master_id.product_brand
-            v-bind:disabled=true
-            v-bind:items=data.details.ext_4
-          />
+          <v-col v-if="data.details.ext_4.length > 0" cols="8">{{ data.details.ext_4[0].label }}</v-col>
         </v-row>
         <v-row>
           <v-col cols="4">Product Categpry</v-col>
-          <CommonMasterCheckBoxes
-            :key=master_id.product_category
-            v-bind:csvtable_id=master_id.product_category
-            v-bind:disabled=true
-            v-bind:items=data.details.ext_3
-          />
+          <v-col v-if="data.details.ext_3.length > 0" cols="8">{{ data.details.ext_3[0].label }}</v-col>
         </v-row>
         <v-row>
           <v-col cols="4">Product Group</v-col>
-          <CommonMasterCheckBoxes
-            :key=master_id.product_group
-            v-bind:csvtable_id=master_id.product_group
-            v-bind:disabled=true
-            v-bind:items=data.details.ext_5
-          />
+          <v-col v-if="data.details.ext_5.length > 0" cols="8">{{ data.details.ext_5[0].label }}</v-col>
         </v-row>
         <v-row>
           <v-col cols="4">Media Format</v-col>
-          <CommonMasterCheckBoxes
-            :key=master_id.media_format
-            v-bind:csvtable_id=master_id.media_format
-            v-bind:disabled=true
-            v-bind:items=data.details.ext_6
-          />
+          <v-col v-if="data.details.ext_6.length > 0" cols="8">{{ data.details.ext_6[0].label }}</v-col>
         </v-row>
         <v-row>
           <v-col cols="4">Usage Rsstricions</v-col>
-          <CommonMasterCheckBoxes
-            :key=master_id.usage_restricions
-            v-bind:csvtable_id=master_id.usage_restricions
-            v-bind:disabled=true
-            v-bind:items=data.details.ext_7
-          />
+          <v-col v-if="data.details.ext_7.length > 0" cols="8">{{ data.details.ext_7[0].label }}</v-col>
         </v-row>
         <v-row>
           <v-col cols="4">Artist</v-col>
-          <v-col cols="8"></v-col>
+          <v-col cols="8">{{ data.details.ext_8 }}</v-col>
         </v-row>
         <v-row>
           <v-col cols="4">Memo</v-col>
-          <v-col cols="8">{{ data.details.ext_8 }}</v-col>
+          <v-col cols="8">{{ data.details.ext_9 }}</v-col>
         </v-row>
         <v-row>
           <v-empty-state></v-empty-state>
