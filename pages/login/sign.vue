@@ -58,6 +58,7 @@ async function setLoginProfile(loginInfo : LoginInfo) {
     if (loginInfo.member_id === data.value.profile.member_id) {
       // 同じはずだが念のため
       auth.group_ids = data.value.profile.group_ids;
+      auth.email = data.value.profile.email;
     }
   }
 }

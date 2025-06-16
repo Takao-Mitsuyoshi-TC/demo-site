@@ -20,9 +20,13 @@ const onClickAddButton = () => {
         <template v-slot:extension>
           <ContentsGourpTabMenu/>
         </template>
-        <v-btn icon>
-          <v-icon>mdi-account</v-icon>
-        </v-btn>
+        <v-tooltip :text="`${auth.user_id}:${auth.email}`">
+          <template v-slot:activator="{ props }">
+            <v-btn v-bind="props" icon>
+              <v-icon>mdi-account</v-icon>
+            </v-btn>
+          </template>
+        </v-tooltip>
     </v-app-bar>
     <v-navigation-drawer>
       <ContentsCategoryListMenu

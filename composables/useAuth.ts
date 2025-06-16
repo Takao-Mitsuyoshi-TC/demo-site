@@ -7,6 +7,7 @@ export const useAuth = defineStore(
       {
         user_id: 0,
         grant_token: "",
+        email: "",
         group_ids: new Map<string, string>(),
       }
     ),

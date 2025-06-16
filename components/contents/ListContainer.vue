@@ -12,9 +12,8 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-const pageNumber = ref(1);
 
-const searchInfo: TopicsListSearchInfo = reactive({ topics_group_id: props.topics_group_id, contents_type: props.contents_type, pageID: pageNumber.value, tag_id: props.tag_id});
+const searchInfo: TopicsListSearchInfo = reactive({ topics_group_id: props.topics_group_id, contents_type: props.contents_type, pageID: contentsParam.page_number, tag_id: props.tag_id});
 searchInfo.topics_group_id = contentsParam.topics_group_id;
 searchInfo.contents_type = contentsParam.topics_category_id;
 searchInfo.topics_keyword = contentsParam.topics_keyword;
@@ -22,7 +21,6 @@ searchInfo.tag_id = contentsParam.tag_id;
 searchInfo.pageID = contentsParam.page_number;
 
 const Paging = async () => {
-  contentsParam.page_number = pageNumber.value;
   searchInfo.pageID = contentsParam.page_number;
 
 };
@@ -69,7 +67,7 @@ onUpdated(() => {
         </V-col>  
       </v-row>
     </v-container>
-    <v-pagination v-model="pageNumber" :length="data.pageInfo.totalPageCnt" total-visible="10" @click="Paging"></v-pagination>
+    <v-pagination v-model="contentsParam.page_number" :length="data.pageInfo.totalPageCnt" total-visible="10" @click="Paging"></v-pagination>
   </template>
 
 </template>
