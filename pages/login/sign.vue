@@ -59,6 +59,9 @@ async function setLoginProfile(loginInfo : LoginInfo) {
       // 同じはずだが念のため
       auth.group_ids = data.value.profile.group_ids;
       auth.email = data.value.profile.email;
+
+      // LocalStrageに格納
+      localStorage.setItem("Auth", JSON.stringify(auth.$state));
     }
   }
 }

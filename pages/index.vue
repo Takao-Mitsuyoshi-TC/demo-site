@@ -11,6 +11,17 @@ contentsParam.topics_group_id = config.public.defaultTopicsGroupId;
 const onClickAddButton = () => {
   navigateTo(`/contents/post`)
 }
+
+const onClickUserInfoButton = () => {
+  navigateTo(`/account/${auth.user_id}`)
+}
+
+const onClickLogoutButton = () => {
+  useLogout();
+  auth.logout;
+  navigateTo(`/`)
+
+}
 </script>
 
 <template>
@@ -22,11 +33,12 @@ const onClickAddButton = () => {
         </template>
         <v-tooltip :text="`${auth.user_id}:${auth.email}`">
           <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" icon>
+            <v-btn v-bind="props" icon @click="onClickUserInfoButton">
               <v-icon>mdi-account</v-icon>
             </v-btn>
           </template>
         </v-tooltip>
+        <v-btn @click="onClickLogoutButton"><v-icon>mdi-logout-variant</v-icon></v-btn>
     </v-app-bar>
     <v-navigation-drawer>
       <ContentsCategoryListMenu
